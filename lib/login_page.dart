@@ -6,6 +6,7 @@ import 'package:appoint_webapp/secretary/schedule_appointment.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'generated/l10n.dart';
 import 'model/User.dart';
 
 class LoginPage extends StatelessWidget {
@@ -13,10 +14,10 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF5DB075),
-        title: const Text(
-          "Login Page",
-          style: TextStyle(color: Colors.white),
+        backgroundColor: Colors.teal,
+        title: Text(
+          S.of(context).loginPage,
+          style: const TextStyle(color: Colors.white),
         ),
       ),
       backgroundColor: Colors.grey[200],
@@ -77,18 +78,27 @@ class _SignInFormState extends State<SignInForm> {
       user.refreshToken = tokens['refreshToken'];
       user.username = userEmail;
       Map decodedToken = parseJwt(user.token);
-      if(decodedToken['role'] == "administrator"){
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ScheduleAppointment(user: user,)));
-      }else{
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ListOfAppointments(user: user,)));
+      if (decodedToken['role'] == "administrator") {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ScheduleAppointment(
+                      user: user,
+                    )));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ListOfAppointments(
+                      user: user,
+                    )));
       }
-
     } else {
-      displayDialog(context, "Błąd", "Email lub Hasło nie jest poprawne");
+      displayDialog(
+          context, S.of(context).bd, S.of(context).emailLubHasoNieJestPoprawne);
     }
   }
+
   String _decodeBase64(String str) {
     String output = str.replaceAll('-', '+').replaceAll('_', '/');
 
@@ -107,6 +117,7 @@ class _SignInFormState extends State<SignInForm> {
 
     return utf8.decode(base64Url.decode(output));
   }
+
   Map<String, dynamic> parseJwt(String token) {
     final parts = token.split('.');
     if (parts.length != 3) {
@@ -134,10 +145,10 @@ class _SignInFormState extends State<SignInForm> {
 
     print(res.statusCode);
     print(res.body);
-    if(res.body.isNotEmpty) {
+    if (res.body.isNotEmpty) {
       return res.body;
     } else
-        return "";
+      return "";
   }
 
   void displayDialog(BuildContext context, String title, String text) =>
@@ -151,15 +162,28 @@ class _SignInFormState extends State<SignInForm> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 20,
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.width * 0.4,
+          child: Image.asset(
+            'assets/logo1.png',
+            color: Colors.teal,
+          ),
+        ),
         const SizedBox(
-          height: 120,
+          height: 30,
         ),
-        const Text(
-          "Log in",
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        Text(
+          S.of(context).logIn,
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 60,),
-        _buildTextField("username"),
+        const SizedBox(
+          height: 60,
+        ),
+        _buildTextField(S.of(context).username),
         const SizedBox(
           height: 30,
         ),
@@ -171,14 +195,13 @@ class _SignInFormState extends State<SignInForm> {
             onPressed: () {
               signIn();
             },
-            child: const Text(
-              "Login",
-              style: TextStyle(fontSize: 20),
+            child: Text(
+              S.of(context).login,
+              style: const TextStyle(fontSize: 20),
             ),
             style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all(const Size(300, 50)),
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xFF5DB075)),
+                backgroundColor: MaterialStateProperty.all(Colors.teal),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -191,24 +214,26 @@ class _SignInFormState extends State<SignInForm> {
     return SizedBox(
       width: 300,
       child: Padding(
-
         padding: const EdgeInsets.all(8.0),
         child: TextField(
-          controller: hintText == "username"?_emailTextController:_passwordTextController,
+            controller: hintText == S.of(context).username
+                ? _emailTextController
+                : _passwordTextController,
             decoration: InputDecoration(
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: hintText,
-        )),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+              hintText: hintText,
+            )),
       ),
     );
   }
+
   _buildPasswordField() {
     return SizedBox(
       width: 300,
       child: Padding(
-
         padding: const EdgeInsets.all(8.0),
         child: TextField(
             obscureText: true,
@@ -216,11 +241,11 @@ class _SignInFormState extends State<SignInForm> {
             autocorrect: false,
             controller: _passwordTextController,
             decoration: InputDecoration(
-              contentPadding:
-              const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-              hintText: "password"
-            )),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                hintText: S.of(context).password)),
       ),
     );
   }

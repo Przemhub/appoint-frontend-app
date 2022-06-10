@@ -33,15 +33,3 @@ Użytkownik typu Administrator posiada wgląd i możliwość edycji danych wprow
 
 
 ![Appointment List](https://media.discordapp.net/attachments/971448906523238523/974214876006342656/unknown.png?width=234&height=443) | ![Patient Stats](https://media.discordapp.net/attachments/971448906523238523/974214875431706694/unknown.png?width=234&height=443) | ![Appointment Form](https://media.discordapp.net/attachments/971448906523238523/974214875029073950/unknown.png?width=234&height=443) | ![Appointment History](https://media.discordapp.net/attachments/971448906523238523/974214875767275540/unknown.png?width=234&height=443)
-
-
-
-
-
-
-
-
-
-
-
-

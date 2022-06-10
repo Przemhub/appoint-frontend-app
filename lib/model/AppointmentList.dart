@@ -4,83 +4,28 @@ class AppointmentList {
   Map appointmentMap = {
     "Monday": [
       {
-        "Name": "Jan",
-        "Surname": "Kowalski",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T01:30:00.000-05:00"
-      },
-      {
-        "Name": "Joanna",
-        "Surname": "Kowalskia",
-        "Age": "24",
-        "Phone Number": "743 123 382",
-        "Date": "2022-10-31T01:30:00.000-05:00"
-      },
-      {
-        "Name": "Bobby",
-        "Surname": "Burger",
-        "Age": "25",
-        "Phone Number": "743 123 382",
-        "Date": "2022-10-31T01:30:00.000-05:00"
-      },
-      {
-        "Name": "Bat",
-        "Surname": "Man",
-        "Age": "999",
-        "Phone Number": "743 123 382",
-        "Date": "2022-10-31T01:30:00.000-05:00"
-      }
+        "id": 16,
+        "date": "2022-05-16",
+        "time": "09:37:58",
+        "length": 60,
+        "patientName": "Testo",
+        "patientSurname": "Testo-Testingowy",
+        "telephoneNumber": "123456789",
+        "roomNumber": "Testow i Badan",
+        "roomSpecialization" : "Jak sama nazwa wskazuje"
+        }
     ],
     "Tuesday": [
-      {
-        "Name": "Bob",
-        "Surname": "Marley",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T02:30:00.000-05:00"
-      },
-      {
-        "Name": "Indiana",
-        "Surname": "Jones",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T02:30:00.000-05:00"
-      }
+
     ],
     "Wednesday": [
-      {
-        "Name": "Angelina",
-        "Surname": "Joline",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T03:30:00.000-05:00"
-      }
+
     ],
     "Thursday": [
-      {
-        "Name": "Jan",
-        "Surname": "Kowalski",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T04:30:00.000-05:00"
-      },
-      {
-        "Name": "Dobry",
-        "Surname": "Ziomek",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T04:30:00.000-05:00"
-      }
+
     ],
     "Friday": [
-      {
-        "Name": "Jan",
-        "Surname": "Kowalski",
-        "Age": "20",
-        "Phone Number": "783 123 382",
-        "Date": "2022-10-31T05:30:00.000-05:00"
-      }
+  
     ]
   };
   List getDays(){
